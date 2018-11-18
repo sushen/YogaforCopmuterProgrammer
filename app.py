@@ -47,28 +47,10 @@ def webhook():
                     response = None
 
                     entity, value = wit_response(messaging_text)
-                    if entity == 'newstype':
-                        response = "Ok, I will send you the {} news".format(str(value))
-                    elif entity == 'location':
-                        response = "Ok, so you live in {0}. Here are top headlines from {0}".format(str(value))
-                    elif entity == 'greetings':
+
+                    if entity == 'greetings':
                         response = 'Welcome, Now we re in Testing, Please Contact Later'
-                        # response += "<html><body> Hello </body></html>"
-                        #response =
-                        # response = []
-                        # for item in entity:
-                        #     respons = {
-                        #         'title': item['title'],
-                        #         'buttons': [{
-                        #             'type': 'web_url',
-                        #             'title': "Read more",
-                        #             'url': item['link']
-                        #         }],
-                        #         'image_url': item['img']
-                        #     }
-                        #     response.append(respons)
-                        #
-                        # return response
+
 
                     if response == None:
                         response = "Sorry, What is your Question, I didn't understand"
