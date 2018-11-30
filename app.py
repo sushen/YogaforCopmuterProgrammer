@@ -1,7 +1,7 @@
 import sys
 from flask import Flask, request
 from pprint import pprint
-from pymessenger import Bot
+from pymessenger import Bot, Element
 from utils import wit_response
 
 app = Flask(__name__)
@@ -48,9 +48,16 @@ def webhook():
 
                     entity, value = wit_response(messaging_text)
 
-                    if entity == 'greetings':
-                        response = 'Welcome, Now we re in Testing, Please Contact Later'
+                    # if entity == 'greetings':
+                    #     response = 'Welcome, Now we re in Testing, Please Contact Later'
 
+                    if entity == 'greetings':
+                        elements = []
+                        element = Element(title="test", image_url="<arsenal_logo.png>", subtitle="subtitle",
+                                          item_url="http://arsenal.com")
+                        elements.append(element)
+
+                        bot.send_generic_message(recipient_id, elements)
 
                     if response == None:
                         response = "Sorry, What is your Question, I didn't understand"
